@@ -1,21 +1,21 @@
 import { AxiosInstance } from 'axios'
 import { FieldData, FieldUpdate } from '../@types'
 
-export default function (client: AxiosInstance) {
+export default function(client: AxiosInstance) {
   return {
-    getFields() {
+    async getFields() {
       return client.get('fields')
     },
 
-    createField(field: FieldData) {
+    async createField(field: FieldData) {
       return client.post('fields', field)
     },
 
-    updateField(fieldId: number, fieldUpdate: FieldUpdate) {
+    async updateField(fieldId: number, fieldUpdate: FieldUpdate) {
       return client.put(`fields/${fieldId}`, fieldUpdate)
     },
 
-    removeField(fieldId: number) {
+    async removeField(fieldId: number) {
       return client.delete(`fields/${fieldId}`)
     },
   }

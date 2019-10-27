@@ -1,7 +1,7 @@
 import { AxiosInstance } from 'axios'
 import { WebhookData, WebhooksResponse } from '../@types'
 
-export default function (client: AxiosInstance) {
+export default function(client: AxiosInstance) {
   return {
     async getWebhooks() {
       const { webhooks } = await this.getWebhooksRaw()
@@ -14,22 +14,22 @@ export default function (client: AxiosInstance) {
     },
 
     async getWebhooksRaw(): Promise<WebhooksResponse> {
-      return await client.get('webhooks')
+      return client.get('webhooks')
     },
 
-    getWebhook(webhookId: number) {
+    async getWebhook(webhookId: number) {
       return client.get(`webhooks/${webhookId}`)
     },
 
-    createWebhook(webhook: WebhookData) {
+    async createWebhook(webhook: WebhookData) {
       return client.post('webhooks', webhook)
     },
 
-    updateWebhook(webhookId: number, webhook: WebhookData) {
+    async updateWebhook(webhookId: number, webhook: WebhookData) {
       return client.post(`webhooks/${webhookId}`, webhook)
     },
 
-    removeWebhook(webhookId: number) {
+    async removeWebhook(webhookId: number) {
       return client.delete(`webhooks/${webhookId}`)
     },
   }

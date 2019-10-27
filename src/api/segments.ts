@@ -1,7 +1,7 @@
 import { AxiosInstance } from 'axios'
 import { SegmentQuery, SegmentsResponse } from '../@types'
 
-export default function (client: AxiosInstance) {
+export default function(client: AxiosInstance) {
   return {
     async getSegments(params: SegmentQuery = {}) {
       const { data } = await this.getSegmentsRaw(params)

@@ -6,36 +6,36 @@ import {
   GroupSubscriberFlags,
   SubscriberGroupQuery,
   SubscriberType,
-  Count
+  Count,
 } from '../@types'
 
-export default function (client: AxiosInstance) {
+export default function(client: AxiosInstance) {
   return {
-    getGroups(params: GroupQuery = {}) {
+    async getGroups(params: GroupQuery = {}) {
       return client.get('groups', { params })
     },
 
-    getGroup(groupId: number) {
+    async getGroup(groupId: number) {
       return client.get(`groups/${groupId}`)
     },
 
-    createGroup(group: GroupData) {
+    async createGroup(group: GroupData) {
       return client.post('group', group)
     },
 
-    updateGroup(groupId: number, groupUpdate: GroupData) {
+    async updateGroup(groupId: number, groupUpdate: GroupData) {
       return client.put(`groups/${groupId}`, groupUpdate)
     },
 
-    removeGroup(groupId: number) {
+    async removeGroup(groupId: number) {
       return client.delete(`groups/${groupId}`)
     },
 
-    addSubscriberToGroup(groupId: number, subscriber: GroupSubscriberData) {
+    async addSubscriberToGroup(groupId: number, subscriber: GroupSubscriberData) {
       return client.post(`groups/${groupId}/subscribers`, subscriber)
     },
 
-    addSubscribersToGroup(
+    async addSubscribersToGroup(
       groupId: number,
       subscribers: GroupSubscriberData[],
       importOptions: GroupSubscriberFlags = {},
@@ -46,15 +46,15 @@ export default function (client: AxiosInstance) {
       })
     },
 
-    getSubscribersGroupImport(groupId: number, importId: number) {
+    async getSubscribersGroupImport(groupId: number, importId: number) {
       return client.get(`groups/${groupId}/subscribers/import/${importId}`)
     },
 
-    getGroupSubscriber(groupId: number, subscriberId: number) {
+    async getGroupSubscriber(groupId: number, subscriberId: number) {
       return client.get(`groups/${groupId}/subscribers/${subscriberId}`)
     },
 
-    getGroupSubscribers(groupId: number, params: SubscriberGroupQuery = {}) {
+    async getGroupSubscribers(groupId: number, params: SubscriberGroupQuery = {}) {
       return client.get(`groups/${groupId}/subscribers`)
     },
 
@@ -63,7 +63,7 @@ export default function (client: AxiosInstance) {
       return count
     },
 
-    getGroupSubscribersByType(
+    async getGroupSubscribersByType(
       groupId: number,
       subscriberType: SubscriberType,
       params: GroupQuery = {},
@@ -81,7 +81,7 @@ export default function (client: AxiosInstance) {
       return count
     },
 
-    removeGroupSubscriber(groupId: number, subscriberIdentifier: number | string) {
+    async removeGroupSubscriber(groupId: number, subscriberIdentifier: number | string) {
       return client.delete(`groups/${groupId}/subscribers/${subscriberIdentifier}`)
     },
   }

@@ -5,16 +5,20 @@ import {
   CampaignQuery,
   CampaignSendData,
   CampaignStatus,
-  Count
+  Count,
 } from '../@types'
 
-export default function (client: AxiosInstance) {
+export default function(client: AxiosInstance) {
   return {
-    actOnCampaign(campaignId: number, action: 'send' | 'cancel', data: CampaignSendData = {}) {
+    async actOnCampaign(
+      campaignId: number,
+      action: 'send' | 'cancel',
+      data: CampaignSendData = {},
+    ) {
       return client.post(`/campaigns/${campaignId}/actions/${action}`, data)
     },
 
-    getCampaigns(status: CampaignStatus = 'sent', params: CampaignQuery = {}) {
+    async getCampaigns(status: CampaignStatus = 'sent', params: CampaignQuery = {}) {
       return client.get(`campaigns/${status}`, { params })
     },
 
@@ -23,7 +27,7 @@ export default function (client: AxiosInstance) {
       return count
     },
 
-    createCampaign(campaign: CampaignData) {
+    async createCampaign(campaign: CampaignData) {
       if (!campaign.groups || !campaign.segments) {
         throw new Error('Groups or segments have to be specified')
       }
@@ -39,11 +43,11 @@ export default function (client: AxiosInstance) {
       return client.post('campaigns', campaign)
     },
 
-    removeCampaign(campaignId: number) {
+    async removeCampaign(campaignId: number) {
       return client.delete(`campaigns/${campaignId}`)
     },
 
-    setCampaignContent(campaignId: number, content: CampaignContent) {
+    async setCampaignContent(campaignId: number, content: CampaignContent) {
       return client.put(`campaigns/${campaignId}/content`, content)
     },
   }

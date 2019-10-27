@@ -3,7 +3,7 @@ import { AxiosRequestConfig } from 'axios'
 export interface Options {
   axiosOptions?: AxiosRequestConfig
   baseURL?: string
-  useCaseConverter?: boolean,
+  useCaseConverter?: boolean
   headers?: { [key: string]: string }
 }
 

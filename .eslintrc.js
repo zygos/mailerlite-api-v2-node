@@ -5,7 +5,7 @@ module.exports = {
     jest: true,
   },
   extends: [
-    'standard',
+    'standard-with-typescript',
   ],
   globals: {
     Atomics: 'readonly',
@@ -14,13 +14,20 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2018,
+    project: './parserOptions.json',
     sourceType: 'module',
   },
   plugins: [
     '@typescript-eslint',
   ],
   rules: {
+    '@typescript-eslint/strict-boolean-expressions': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
     'comma-dangle': ['error', 'always-multiline'],
-    'space-before-function-paren': ['error', 'never'],
+    'space-before-function-paren': ['error', {
+      'anonymous': 'never',
+      'named': 'never',
+      'asyncArrow': 'always',
+    }],
   },
 }

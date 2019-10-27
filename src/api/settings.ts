@@ -1,32 +1,28 @@
 import { AxiosInstance } from 'axios'
 import { DoubleOptinStatus } from '../@types'
 
-export default function (client: AxiosInstance) {
+export default function(client: AxiosInstance) {
   return {
-    getDoubleOptinStatus(): Promise<DoubleOptinStatus> {
+    async getDoubleOptinStatus(): Promise<DoubleOptinStatus> {
       return client.get('settings/double_optin')
     },
 
     async hasEnabledDoubleOptin(): Promise<boolean> {
-      try {
-        const status = await this.getDoubleOptinStatus()
-        return status.enabled
-      } catch (err) {
-        throw err
-      }
+      const status = await this.getDoubleOptinStatus()
+      return status.enabled
     },
 
-    setDoubleOptin(isEnabled: boolean): Promise<DoubleOptinStatus> {
+    async setDoubleOptin(isEnabled: boolean): Promise<DoubleOptinStatus> {
       return client.post('settings/double_optin', {
         enable: isEnabled,
       })
     },
 
-    enableDoubleOptin() {
+    async enableDoubleOptin() {
       return this.setDoubleOptin(true)
     },
 
-    disableDoubleOptin() {
+    async disableDoubleOptin() {
       return this.setDoubleOptin(false)
     },
   }

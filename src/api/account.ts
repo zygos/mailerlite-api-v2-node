@@ -1,9 +1,9 @@
 import { AxiosInstance } from 'axios'
 import { AccountWrap } from '../@types'
 
-export default function (client: AxiosInstance) {
+export default function(client: AxiosInstance) {
   return {
-    getAccountRaw() : Promise<AccountWrap> {
+    async getAccountRaw(): Promise<AccountWrap> {
       return client.get('me')
     },
 
@@ -12,7 +12,7 @@ export default function (client: AxiosInstance) {
       return account
     },
 
-    getMe() {
+    async getMe() {
       return this.getAccount()
     },
   }

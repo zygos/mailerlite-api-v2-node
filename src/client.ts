@@ -3,10 +3,6 @@ import camelCase from 'camelcase-keys'
 import snakeCase from 'snakecase-keys'
 import { Options } from './@types'
 
-function castArray(arr: any) {
-  return Array.isArray(arr) ? arr : [arr]
-}
-
 export default function MailerLiteClient(apiKey: string, {
   axiosOptions = {},
   baseURL = 'https://api.mailerlite.com/api/v2/',
@@ -31,13 +27,13 @@ export default function MailerLiteClient(apiKey: string, {
   if (useCaseConverter) {
     client.interceptors.request.use(
       (request) => {
-        if (request.data && typeof request.data === 'object') {
+        if (!!request.data && typeof request.data === 'object') {
           request.data = snakeCase(request.data, { deep: true })
         }
 
         return request
       },
-      error => Promise.reject(error),
+      async (error) => Promise.reject(error),
     )
   }
 
@@ -47,7 +43,7 @@ export default function MailerLiteClient(apiKey: string, {
 
       return camelCase(response.data, { deep: true })
     },
-    error => Promise.reject(error),
+    async (error) => Promise.reject(error),
   )
 
   return client
