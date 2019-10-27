@@ -6,22 +6,6 @@ yarn-error.log*
 /test/coverage/
 /src/coverage/
 coverage/
-selenium-debug.log
-
-# Distribution
-/config/local.js
-/dist/
-/backup/
-/live/
-/logs/
-
-# Local files
-.env
-.env.local
-local/
-
-# Redis persistance
-dump.rdb
 
 # Editor directories and files
 .idea
@@ -31,8 +15,8 @@ dump.rdb
 *.njsproj
 *.sln
 
-# webpack stats output
-/stats.json
-
 # config
 config.ts
+
+# built files
+/dist

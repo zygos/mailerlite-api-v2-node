@@ -2,11 +2,16 @@
   "name": "mailerlite-api-v2-node",
   "version": "0.1.0",
   "description": "[MailerLite API v2](https://developers.mailerlite.com/docs/getting-started-with-mailerlite-api) [Node.js](https://nodejs.org/en/) SDK. It is mostly a thin wrapper on [axios](https://github.com/axios/axios) that provides [authentication](https://developers.mailerlite.com/docs/authentication), response/request camelCase transformations, Typescript type definitions and some handy shorthand methods.",
-  "main": "index.js",
+  "main": "dist/index.js",
+   "types": "dist/index.d.ts",
   "scripts": {
     "test": "npx jest --config jest.config.js",
     "test:watch": "npx jest --watch",
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "npm run build",
+    "prepublishOnly" : "npm test",
+    "version": "git add -A src",
+    "postversion" : "git push && git push --tags"
   },
   "author": "zygos",
   "license": "MIT",
@@ -52,5 +57,6 @@
   "bugs": {
     "url": "https://github.com/zygos/mailerlite-api-v2-node/issues"
   },
-  "homepage": "https://github.com/zygos/mailerlite-api-v2-node#readme"
+  "homepage": "https://github.com/zygos/mailerlite-api-v2-node#readme",
+  "files": ["dist/**/*"]
 }
