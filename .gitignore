@@ -1,0 +1,38 @@
+.DS_Store
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/test/coverage/
+/src/coverage/
+coverage/
+selenium-debug.log
+
+# Distribution
+/config/local.js
+/dist/
+/backup/
+/live/
+/logs/
+
+# Local files
+.env
+.env.local
+local/
+
+# Redis persistance
+dump.rdb
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# webpack stats output
+/stats.json
+
+# config
+config.ts

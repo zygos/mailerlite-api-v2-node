@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "declaration": true,
+    "strict": true,
+    "outDir": "./dist",
+    "target": "es5",
+    "lib": ["es6", "es2017", "es2018", "es2019"],
+    "module": "commonjs"
+  },
+  "include": [
+    "./src/**/*", "jsSrc/importer.js", "jsSrc/fn.js", "jsSrc/seed.js", "jsSrc/schemas.js"
+  ],
+  "exclude": ["node_modules", "**/__tests__/*"],
+  "types": "index.d.ts"
+}
