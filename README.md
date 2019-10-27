@@ -168,25 +168,27 @@ Shorthand that resolves to a Promise<boolean>.
 
 #### `getSubsscriberGroups(identifier)`
 
-### Timezone
+### Timezones
+
+#### `getTimezones()`
 
 #### `getTimezone(timezoneId)`
 
 ### Webhooks
 
-### `getWebhooks()`
+#### `getWebhooks()`
 
-### `getWebhooksCount()`
+#### `getWebhooksCount()`
 
-### `getWebhooksRaw()`
+#### `getWebhooksRaw()`
 
-### `getWebhook(webhookId)`
+#### `getWebhook(webhookId)`
 
-### `createWebhook(webhook)`
+#### `createWebhook(webhook)`
 
-### `updateWebhook(webhookId, webhook)`
+#### `updateWebhook(webhookId, webhook)`
 
-### `removeWebhook(webhookId)`
+#### `removeWebhook(webhookId)`
 
 
 ## Tests
