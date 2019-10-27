@@ -8,10 +8,7 @@
     "test": "npx jest --config jest.config.js",
     "test:watch": "npx jest --watch",
     "build": "tsc",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test",
-    "version": "git add -A src",
-    "postversion": "git push && git push --tags"
+    "prepare": "npm run build"
   },
   "author": "zygos",
   "license": "MIT",
