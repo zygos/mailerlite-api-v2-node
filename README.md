@@ -23,7 +23,7 @@ yarn add mailerlite-api-v2-node
 In node:
 
 ```javascript
-const MailerLite = require('mailerlite-api-v2-node')
+const MailerLite = require('mailerlite-api-v2-node').default
 
 const mailerLite = MailerLite('YOUR_API_KEY')
 
