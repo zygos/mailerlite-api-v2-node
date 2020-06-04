@@ -168,6 +168,8 @@ Shorthand that resolves to a Promise<boolean>.
 
 #### `getSubsscriberGroups(identifier)`
 
+#### `removeSubscriber(identifier)`
+
 ### Timezones
 
 #### `getTimezones()`

@@ -37,5 +37,9 @@ export default function(client: AxiosInstance) {
     async getSubsscriberGroups(identifier: number | string) {
       return client.get(`subscribers/${identifier}/groups`)
     },
+
+    async removeSubscriber(identifier: number | string) {
+      return client.delete(`subscribers/${identifier}`)
+    },
   }
 }
