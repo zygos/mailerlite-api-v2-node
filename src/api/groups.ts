@@ -20,7 +20,7 @@ export default function(client: AxiosInstance) {
     },
 
     async createGroup(group: GroupData) {
-      return client.post('group', group)
+      return client.post('groups', group)
     },
 
     async updateGroup(groupId: number, groupUpdate: GroupData) {
