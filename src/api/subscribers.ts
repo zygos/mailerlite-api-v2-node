@@ -23,7 +23,7 @@ export default function(client: AxiosInstance) {
       return client.get('subscribers/search', { params })
     },
 
-    async getSubsscriberActivity(identifier: number | string) {
+    async getSubscriberActivity(identifier: number | string) {
       return client.get(`subscribers/${identifier}/activity`)
     },
 
@@ -34,7 +34,7 @@ export default function(client: AxiosInstance) {
       return client.get(`subscribers/${identifier}/actvity/${activityType}`)
     },
 
-    async getSubsscriberGroups(identifier: number | string) {
+    async getSubscriberGroups(identifier: number | string) {
       return client.get(`subscribers/${identifier}/groups`)
     },
   }

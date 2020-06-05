@@ -162,11 +162,11 @@ Shorthand that resolves to a Promise<boolean>.
 
 #### `searchSubscribers(params?)`
 
-#### `getSubsscriberActivity(identifier)`
+#### `getSubscriberActivity(identifier)`
 
-#### `getSubsscriberActivityByType(identifier, activityType)`
+#### `getSubscriberActivityByType(identifier, activityType)`
 
-#### `getSubsscriberGroups(identifier)`
+#### `getSubscriberGroups(identifier)`
 
 ### Timezones
 
