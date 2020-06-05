@@ -1,6 +1,6 @@
 {
   "name": "mailerlite-api-v2-node",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "[MailerLite API v2](https://developers.mailerlite.com/docs/getting-started-with-mailerlite-api) [Node.js](https://nodejs.org/en/) SDK. It is mostly a thin wrapper on [axios](https://github.com/axios/axios) that provides [authentication](https://developers.mailerlite.com/docs/authentication), response/request camelCase transformations, Typescript type definitions and some handy shorthand methods.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
