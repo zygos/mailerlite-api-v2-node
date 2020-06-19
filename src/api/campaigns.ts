@@ -28,7 +28,7 @@ export default function(client: AxiosInstance) {
     },
 
     async createCampaign(campaign: CampaignData) {
-      if (!campaign.groups || !campaign.segments) {
+      if (!campaign.groups && !campaign.segments) {
         throw new Error('Groups or segments have to be specified')
       }
 
