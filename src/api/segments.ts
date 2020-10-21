@@ -14,7 +14,7 @@ export default function(client: AxiosInstance) {
     },
 
     async getSegmentsRaw(params: SegmentQuery = {}): Promise<SegmentsResponse> {
-      return client.get('segments', { params })
+      return await client.get('segments', { params })
     },
   }
 }

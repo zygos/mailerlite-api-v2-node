@@ -4,7 +4,7 @@ import { AccountWrap } from '../@types'
 export default function(client: AxiosInstance) {
   return {
     async getAccountRaw(): Promise<AccountWrap> {
-      return client.get('me')
+      return await client.get('me')
     },
 
     async getAccount() {
@@ -13,7 +13,7 @@ export default function(client: AxiosInstance) {
     },
 
     async getMe() {
-      return this.getAccount()
+      return await this.getAccount()
     },
   }
 }

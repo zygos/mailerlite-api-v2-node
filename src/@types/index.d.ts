@@ -47,6 +47,7 @@ export type LanguageCode =
   string |
   null
 
+export type CampaignAction = 'send' | 'cancel'
 export type CampaignStatus = 'sent' | 'draft' | 'outbox'
 
 export interface CampaignQuery {
@@ -109,16 +110,18 @@ export interface SubscriberQuery {
   type?: SubscriberType
 }
 
-export interface SubsriberFields {
-  city: string
-  company: string
-  [key: string]: any
+// TODO: consider adding optional key hints for city, company, etc.
+export interface SubscriberFields {
+  [key: string]: string | number | Date
 }
+
+// TODO: remove in next major version
+export interface SubsriberFields extends SubscriberFields {}
 
 export interface SubscriberData {
   email: string
   name?: string
-  fields?: SubsriberFields
+  fields?: SubscriberFields
   resubscribe?: boolean
   type?: 'unsubscribed' | 'active' | 'unconfirmed'
   signupIp?: string
@@ -130,7 +133,7 @@ export interface SubscriberData {
 export interface SubscriberDataUpdate {
   name?: string
   type?: 'unsubscribed' | 'active'
-  fields?: SubsriberFields
+  fields?: SubscriberFields
   resendAutoresponders?: boolean
 }
 
@@ -164,7 +167,7 @@ export interface GroupData {
 export interface GroupSubscriberData {
   email: string
   name?: string
-  fields?: SubsriberFields
+  fields?: SubscriberFields
   resubscribe?: boolean
   type?: 'unsubscribed' | 'active' | 'unconfirmed'
   autoresponders?: boolean

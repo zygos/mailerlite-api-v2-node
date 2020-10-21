@@ -4,42 +4,47 @@ import { SubscriberQuery, SubscriberData, SubscriberDataUpdate, SubscriberSearch
 export default function(client: AxiosInstance) {
   return {
     async getSubscribers(params: SubscriberQuery = {}) {
-      return client.get('subscribers', { params })
+      return await client.get('subscribers', { params })
     },
 
     async addSubscriber(subscriber: SubscriberData) {
-      return client.post('subscribers', subscriber)
+      return await client.post('subscribers', subscriber)
     },
 
     async getSubscriber(identifier: number | string) {
-      return client.get(`subscribers/${identifier}`)
+      return await client.get(`subscribers/${identifier}`)
     },
 
     async updateSubscriber(identifier: number | string, subscriber: SubscriberDataUpdate) {
-      return client.put(`subscribers/${identifier}`, subscriber)
+      return await client.put(`subscribers/${identifier}`, subscriber)
     },
 
     async searchSubscribers(params: SubscriberSearchQuery = {}) {
-      return client.get('subscribers/search', { params })
+      return await client.get('subscribers/search', { params })
     },
 
     async getSubscriberActivity(identifier: number | string) {
-      return client.get(`subscribers/${identifier}/activity`)
+      return await client.get(`subscribers/${identifier}/activity`)
     },
 
     async getSubscriberActivityByType(
       identifier: number | string,
       activityType: SubscriberActivityType,
     ) {
-      return client.get(`subscribers/${identifier}/actvity/${activityType}`)
+      const url = [
+        `subscribers/${identifier}/actvity`,
+        activityType,
+      ].join('/')
+
+      return await client.get(url)
     },
 
     async getSubscriberGroups(identifier: number | string) {
-      return client.get(`subscribers/${identifier}/groups`)
+      return await client.get(`subscribers/${identifier}/groups`)
     },
 
     async removeSubscriber(identifier: number | string) {
-      return client.delete(`subscribers/${identifier}`)
+      return await client.delete(`subscribers/${identifier}`)
     },
   }
 }

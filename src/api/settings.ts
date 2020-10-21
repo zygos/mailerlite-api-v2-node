@@ -4,7 +4,7 @@ import { DoubleOptinStatus } from '../@types'
 export default function(client: AxiosInstance) {
   return {
     async getDoubleOptinStatus(): Promise<DoubleOptinStatus> {
-      return client.get('settings/double_optin')
+      return await client.get('settings/double_optin')
     },
 
     async hasEnabledDoubleOptin(): Promise<boolean> {
@@ -13,17 +13,17 @@ export default function(client: AxiosInstance) {
     },
 
     async setDoubleOptin(isEnabled: boolean): Promise<DoubleOptinStatus> {
-      return client.post('settings/double_optin', {
+      return await client.post('settings/double_optin', {
         enable: isEnabled,
       })
     },
 
     async enableDoubleOptin() {
-      return this.setDoubleOptin(true)
+      return await this.setDoubleOptin(true)
     },
 
     async disableDoubleOptin() {
-      return this.setDoubleOptin(false)
+      return await this.setDoubleOptin(false)
     },
   }
 }

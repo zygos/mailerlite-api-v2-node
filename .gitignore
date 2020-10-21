@@ -21,3 +21,6 @@ config.ts
 
 # built files
 /dist
+
+# local project files
+/local/

@@ -8,7 +8,7 @@ export default function MailerLiteClient(apiKey: string, {
   baseURL = 'https://api.mailerlite.com/api/v2/',
   useCaseConverter = true,
   headers = {},
-}: Options = {}) {
+}: Options = {}): AxiosInstance {
   if (typeof apiKey !== 'string') throw new Error('No API key provided')
 
   const axiosConfig = {
@@ -33,7 +33,7 @@ export default function MailerLiteClient(apiKey: string, {
 
         return request
       },
-      async (error) => Promise.reject(error),
+      async error => await Promise.reject(error),
     )
   }
 
@@ -43,7 +43,7 @@ export default function MailerLiteClient(apiKey: string, {
 
       return camelCase(response.data, { deep: true })
     },
-    async (error) => Promise.reject(error),
+    async error => await Promise.reject(error),
   )
 
   return client

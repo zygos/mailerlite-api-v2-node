@@ -1,5 +1,6 @@
 import { AxiosInstance } from 'axios'
 import {
+  CampaignAction,
   CampaignContent,
   CampaignData,
   CampaignQuery,
@@ -12,17 +13,17 @@ export default function(client: AxiosInstance) {
   return {
     async actOnCampaign(
       campaignId: number,
-      action: 'send' | 'cancel',
+      action: CampaignAction,
       data: CampaignSendData = {},
     ) {
-      return client.post(`/campaigns/${campaignId}/actions/${action}`, data)
+      return await client.post(`/campaigns/${campaignId}/actions/${action}`, data)
     },
 
     async getCampaigns(status: CampaignStatus = 'sent', params: CampaignQuery = {}) {
-      return client.get(`campaigns/${status}`, { params })
+      return await client.get(`campaigns/${status}`, { params })
     },
 
-    async getCampaignCount(status: CampaignStatus = 'sent') {
+    async getCampaignCount(status: CampaignStatus = 'sent'): Promise<number> {
       const { count }: Count = await client.get(`campaigns/${status}/count`)
       return count
     },
@@ -40,15 +41,15 @@ export default function(client: AxiosInstance) {
         throw new Error('AbSettings are required if campaign type is ab.')
       }
 
-      return client.post('campaigns', campaign)
+      return await client.post('campaigns', campaign)
     },
 
     async removeCampaign(campaignId: number) {
-      return client.delete(`campaigns/${campaignId}`)
+      return await client.delete(`campaigns/${campaignId}`)
     },
 
     async setCampaignContent(campaignId: number, content: CampaignContent) {
-      return client.put(`campaigns/${campaignId}/content`, content)
+      return await client.put(`campaigns/${campaignId}/content`, content)
     },
   }
 }

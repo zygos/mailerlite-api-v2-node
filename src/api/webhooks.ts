@@ -14,23 +14,23 @@ export default function(client: AxiosInstance) {
     },
 
     async getWebhooksRaw(): Promise<WebhooksResponse> {
-      return client.get('webhooks')
+      return await client.get('webhooks')
     },
 
     async getWebhook(webhookId: number) {
-      return client.get(`webhooks/${webhookId}`)
+      return await client.get(`webhooks/${webhookId}`)
     },
 
     async createWebhook(webhook: WebhookData) {
-      return client.post('webhooks', webhook)
+      return await client.post('webhooks', webhook)
     },
 
     async updateWebhook(webhookId: number, webhook: WebhookData) {
-      return client.post(`webhooks/${webhookId}`, webhook)
+      return await client.post(`webhooks/${webhookId}`, webhook)
     },
 
     async removeWebhook(webhookId: number) {
-      return client.delete(`webhooks/${webhookId}`)
+      return await client.delete(`webhooks/${webhookId}`)
     },
   }
 }

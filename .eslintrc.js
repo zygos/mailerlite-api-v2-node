@@ -21,8 +21,10 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
-    '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/function': 'off',
+    '@typescript-eslint/space-before-function-paren': 'off',
+    '@typescript-eslint/strict-boolean-expressions': 'off',
     'comma-dangle': ['error', 'always-multiline'],
     'space-before-function-paren': ['error', {
       'anonymous': 'never',
