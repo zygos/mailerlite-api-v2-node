@@ -9,7 +9,7 @@
     "test:watch": "npx jest --watch",
     "lint": "npx eslint ./src --ext .ts,.tsx",
     "lint:fix": "npx eslint ./src --fix --ext .ts,.tsx",
-    "build": "tsc && cp -r src/@types dist/@types",
+    "build": "tsc && cp -r src/@types dist",
     "prepare": "npm run build"
   },
   "author": "zygos",
