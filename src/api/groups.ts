@@ -9,13 +9,30 @@ import {
   SubscriberType,
 } from '../@types'
 
+export interface MailerLiteGroup {
+  id: number
+  name: string
+  total: number
+  active: number
+  unsubscribed: number
+  bounced: number
+  unconfirmed: number
+  junk: number
+  sent: number
+  opened: number
+  clicked: number
+  parentId: number
+  dateCreated: string
+  dateUpdated: string
+}
+
 export default function(client: AxiosInstance) {
   return {
-    async getGroups(params: GroupQuery = {}) {
+    async getGroups(params: GroupQuery = {}): Promise<MailerLiteGroup[]> {
       return await client.get('groups', { params })
     },
 
-    async getGroup(groupId: number) {
+    async getGroup(groupId: number): Promise<MailerLiteGroup> {
       return await client.get(`groups/${groupId}`)
     },
 
@@ -81,7 +98,10 @@ export default function(client: AxiosInstance) {
       return count
     },
 
-    async removeGroupSubscriber(groupId: number, subscriberIdentifier: number | string) {
+    async removeGroupSubscriber(
+      groupId: number,
+      subscriberIdentifier: number | string,
+    ): Promise<string> {
       return await client.delete(`groups/${groupId}/subscribers/${subscriberIdentifier}`)
     },
   }

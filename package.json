@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "npx jest --config jest.config.js",
-    "test:watch": "npx jest --watch",
+    "test:watch": "npx jest --config jest.config.js --watch",
     "lint": "npx eslint ./src --ext .ts,.tsx",
     "lint:fix": "npx eslint ./src --fix --ext .ts,.tsx",
     "build": "tsc && cp -r src/@types dist",
