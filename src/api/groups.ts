@@ -72,7 +72,7 @@ export default function(client: AxiosInstance) {
     },
 
     async getGroupSubscribers(groupId: number, params: SubscriberGroupQuery = {}) {
-      return await client.get(`groups/${groupId}/subscribers`)
+      return await client.get(`groups/${groupId}/subscribers`, { params })
     },
 
     async getGroupSubscriberCount(groupId: number) {
