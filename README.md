@@ -98,6 +98,8 @@ Alias: `getMe()`
 
 #### `getGroups(params?)`
 
+#### `searchGroups(groupName)`
+
 #### `getGroup(groupId)`
 
 #### `createGroup(group)`
