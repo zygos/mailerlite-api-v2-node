@@ -160,6 +160,10 @@ export interface GroupQuery {
   filters?: string
 }
 
+export interface GroupSearchQuery {
+  group_name: string
+}
+
 export interface GroupData {
   name?: string
 }

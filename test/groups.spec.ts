@@ -23,6 +23,28 @@ describe('groups', () => {
     expect(groups.length).toBeGreaterThanOrEqual(1)
   })
 
+  describe('group searching', () => {
+    let group: MailerLiteGroup
+
+    beforeAll(async () => {
+      const { client } = clientFactory()
+      group = await client.createGroup({ name: 'test-group' })
+    })
+
+    afterAll(async () => {
+      const { client } = clientFactory()
+      await client.removeGroup(group.id)
+    })
+
+    it('searches groups by group name', async () => {
+      const { client } = clientFactory()
+      const groups = await client.searchGroups(group.name)
+
+      expect(groups).toBeArray()
+      expect(groups[0].id).toBe(group.id)
+    })
+  })
+
   describe('group subscribers', () => {
     let group: MailerLiteGroup
 
@@ -68,7 +90,7 @@ describe('groups', () => {
       await client.removeGroupSubscriber(group.id, subscriberEmail)
 
       expect(axiosDelete)
-        .toBeCalledWith(`groups/67348230/subscribers/${subscriberEmail}`)
+        .toBeCalledWith(`groups/${group.id}/subscribers/${subscriberEmail}`)
     })
   })
 })

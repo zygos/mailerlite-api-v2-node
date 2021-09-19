@@ -3,6 +3,7 @@ import {
   Count,
   GroupData,
   GroupQuery,
+  GroupSearchQuery,
   GroupSubscriberData,
   GroupSubscriberFlags,
   SubscriberGroupQuery,
@@ -32,11 +33,15 @@ export default function(client: AxiosInstance) {
       return await client.get('groups', { params })
     },
 
+    async searchGroups(groupName: GroupSearchQuery['group_name']): Promise<MailerLiteGroup[]> {
+      return await client.post('groups/search', { group_name: groupName })
+    },
+
     async getGroup(groupId: number): Promise<MailerLiteGroup> {
       return await client.get(`groups/${groupId}`)
     },
 
-    async createGroup(group: GroupData) {
+    async createGroup(group: GroupData): Promise<MailerLiteGroup> {
       return await client.post('groups', group)
     },
 
@@ -44,7 +49,7 @@ export default function(client: AxiosInstance) {
       return await client.put(`groups/${groupId}`, groupUpdate)
     },
 
-    async removeGroup(groupId: number) {
+    async removeGroup(groupId: number): Promise<{success: boolean}> {
       return await client.delete(`groups/${groupId}`)
     },
 
